@@ -1,0 +1,28 @@
+<!DOCTYPE HTML>
+<html lang="en">
+    <meta name="viewport" content="width=320; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;"/>
+	<head>
+        <title>CSS3 Coverflow</title>
+		<link href="http://ajax.googleapis.com/ajax/libs/yui/2.8.0r4/build/reset-fonts-grids/reset-fonts-grids.css" rel="stylesheet" type="text/css" />
+		<link href="css/coverflow.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+		<div id="coverflow">
+			<img src="samples/6.jpg" alt="corchohadita" />
+			<img src="samples/5.jpg" alt="icono lupa" />
+			<img src="samples/4.jpg" alt="emo girl" />
+			<img src="samples/3.jpg" alt="Gafufa con salvavidas" />
+			<img src="samples/2.jpg" alt="Mural Coleto" />
+			<img src="samples/1.jpg" alt="Gafufa" />
+		</div>
+    </body>
+	<script src="http://code.jquery.com/jquery-1.6.2.min.js" type="text/javascript"></script>
+	<script src="http://code.jquery.com/mobile/latest/jquery.mobile.min.js" type="text/javascript"></script>
+	<script src="js/coverflow.plugin.js"></script>
+	<script type="application/x-javascript">
+		$(document).ready(function() {
+			$('#coverflow').coverFlow();
+		})
+	</script>
+	
+</html>

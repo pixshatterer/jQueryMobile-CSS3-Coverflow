@@ -1,0 +1,129 @@
+/*test!*/
+.coverFlow.test > div,
+.coverFlow.test > p{
+	background-color:grey;
+}
+.coverFlow.test div.contents{
+	background-color:red;
+}
+.coverFlow.test li,
+.coverFlow.test li img{
+	border:1px solid yellow;
+}
+
+.coverFlow{
+	background:#000000;
+	padding:50px 0;
+	text-align:center;
+	overflow:hidden;
+}
+
+.coverFlow ul,.coverFlow li,.coverFlow p{
+	position:relative;
+}
+
+.coverFlow > div {
+	margin:0 auto;
+}
+
+.coverFlow > div,
+.coverFlow > div > div{
+	display:inline-block;
+	margin:0 auto;
+	white-space:nowrap;
+}
+
+.coverFlow > div > div{
+	-webkit-transition: all 300ms ease-out;
+}
+
+.coverFlow > p{
+	clear: both;
+	color:#FFFFFF;
+	font-family: "Lucida Grande", sans-serif;
+	font-size:12px;
+	font-weight:bold;
+	margin:25px auto 0 auto;
+	text-shadow: 1px 1px 2px #000000;
+	width:200px;
+	z-index:10;
+}
+
+.coverFlow > div > div > ul{
+	display:block;
+	float:left;
+	list-style:none;
+	padding:0;
+}
+
+.coverFlow > div > div > ul > li{
+	display:block;
+	height:100px;
+	width:100px;
+	-webkit-perspective: 500px;
+}
+
+.coverFlow > div > div > ul.active{
+	z-index:5;
+}
+
+.coverFlow > div > div > ul.leftList > li{
+	float:left;
+	margin-right:-50px;
+}
+
+.coverFlow > div > div > ul.active > li:last-child{
+	margin:0 40px;
+	z-index:10;
+}
+
+.coverFlow > div > div > ul > li > div{
+	-webkit-transition: all 100ms ease-in;
+}
+
+.coverFlow > div > div,
+.coverFlow > div > div > ul.inactive > li:last-child > div,
+.coverFlow > div > div > ul.active > li:last-child > div{
+	
+}
+
+.coverFlow > div > div > ul.inactive > li:last-child > div,
+.coverFlow > div > div > ul.active > li:last-child > div{
+	-webkit-transition: all 300ms ease-out;
+	-webkit-transform: rotateY(0deg) translateZ(150px) !important;
+}
+
+.coverFlow > div > div > ul.active > li:last-child > div > img{
+	opacity:1;
+}
+
+.coverFlow > div > div > ul.rightList > li{
+	float:right;
+	margin-left:-50px;				
+}
+
+.coverFlow > div > div > ul > li > div{
+	background-color:#000000;
+	-webkit-box-shadow: 0px 0px 15px #000000;
+	/*reflection*/
+	-webkit-box-reflect: below 1px
+	-webkit-gradient( linear, left bottom, left top, color-stop(0.10, rgba(255,255,255,0.7)), color-stop(0.50, transparent));
+}
+
+.coverFlow > div > div > ul > li > div,
+.coverFlow > div > div > ul > li > div > img{
+	height:100px;
+	width:100px;
+}
+
+.coverFlow > div > div > ul > li > div > img{
+	opacity:0.5
+}
+
+.coverFlow > div > div > ul.leftList > li >div{
+	-webkit-transform: rotateY(45deg);
+}			
+
+.coverFlow > div > div > ul.rightList > li > div{
+	-webkit-transform: rotateY(-45deg);
+}
