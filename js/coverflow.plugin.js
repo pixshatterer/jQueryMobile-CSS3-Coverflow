@@ -14,7 +14,7 @@ $.fn.coverFlow = function(options) {
 
     function buildCoverFlow(elem) {
         var MARGIN_DELTA = 60,
-            //TODO: number taken y observation... get the origin of this
+            //TODO: number taken by observation... get the origin of this
             container = $(elem),
             domStructure = $('<div class="coverFlow"><div><div class="content"><ul class="leftList"></ul><ul class="rightList active"></ul></div></div><p></p></div>'),
             itemStructure = $('<li><div/></li>'),
