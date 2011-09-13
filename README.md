@@ -6,13 +6,15 @@ This is intended to work for Safari under iOS (right now alignment looks funny i
 Most of the effort have been put in the UI/graphic aspect... feel free to optimize jQuery as i will continue  to work on that :).
 
 V.1.0
------------
-- It works in iOS (4.3.3) Safari in portrait mode
+---
+- It works in iOS (4.3.3) Safari in portrait mode, landscape is on progress
 - CSS is static - will be fragmented into dynamic/static pieces since part of the styles works in function of the images size
 - JS is in process of optimization.
 
+---
+
 Legal stuff
------------
+---
 Copyright (C) 2011 by G.Galvis
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
