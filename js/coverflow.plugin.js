@@ -17,13 +17,18 @@
         function buildCoverFlow(elem) {
             var MARGIN_DELTA = 60,
                 //TODO: number taken by observation... get the origin of this
+				COMPONENT_DOM = '<div class="coverFlow">'+
+					'	<div>'+
+					'		<div class="content">'+
+					'			<ul class="leftList"></ul>'+
+					'			<ul class="rightList active"></ul>'+
+					'		</div>'+
+					'	</div>'+
+					'	<p></p>'+
+					'</div>',
+                ITEM_DOM = '<li><div/></li>',
                 container = $(elem),
-                domStructure = $('<div class="coverFlow"><div><div class="content"><ul class="leftList"></ul><ul class="rightList active"></ul></div></div><p></p></div>'),
-                itemStructure = $('<li><div/></li>'),
-                reference = domStructure.find('div.content'),
-                previousItems = domStructure.find('.leftList'),
-                nextItems = domStructure.find('.rightList'),
-                info, infoWidth, initialPos;
+                reference, previousItems, nextItems, info, infoWidth, initialPos;
 
             /**
              * @name setAfterSlide
@@ -68,11 +73,19 @@
              */
 
             function setContent() {
+                var componentDOM = $(COMPONENT_DOM),
+                    itemDOM = $(ITEM_DOM);
+
+                reference = componentDOM.find('div.content');
+                previousItems = componentDOM.find('.leftList');
+                nextItems = componentDOM.find('.rightList');
+                info = componentDOM.find('p');
+
                 container.find('img').each(function(index, image) {
-                    nextItems.prepend(itemStructure.clone(false).children('div').html(image).end());
+                    nextItems.prepend(itemDOM.clone(false).children('div').html(image).end());
                 });
-                container.html(domStructure);
-                info = container.find('p');
+
+                container.html(componentDOM);
                 infoWidth = info.width();
                 initialPos = Math.abs(info.position().left - (container.children('div').position().left));
             }
@@ -83,7 +96,8 @@
              */
 
             function setBindings() {
-                container.bind('keyup swipeleft swiperight', function(event) {
+                container.bind('swipeleft swiperight', function(event) {
+                    console.log(event.keyCode)
                     event.preventDefault();
                     switch (event.type) {
                     case 'swipeleft':
@@ -93,16 +107,15 @@
                     case 'swiperight':
                         changeElement(previousItems, nextItems);
                         break;
-
-                    case 'keyup':
-                        switch (event.keyCode) {
-                        case 37:
-                            changeElement(previousItems, nextItems);
-                            break;
-                        case 39:
-                            changeElement(nextItems, previousItems);
-                            break;
-                        }
+                    }
+                });
+                $(document).keyup(function(event) {
+                    switch (event.keyCode) {
+                    case 37:
+                        changeElement(previousItems, nextItems);
+                        break;
+                    case 39:
+                        changeElement(nextItems, previousItems);
                         break;
                     }
                 });
