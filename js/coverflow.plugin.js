@@ -15,7 +15,7 @@
          */
 
         function buildCoverFlow(elem) {
-            var MARGIN_DELTA = 60,
+            var MARGIN_DELTA = 0,
                 //TODO: number taken by observation... get the origin of this
 				COMPONENT_DOM = '<div class="coverFlow">'+
 					'	<div>'+
