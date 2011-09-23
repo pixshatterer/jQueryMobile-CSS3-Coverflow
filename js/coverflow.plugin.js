@@ -16,6 +16,7 @@
 
         function buildCoverFlow(elem) {
             var MARGIN_DELTA = 0,
+				CHANGE_EVENT = 'coverChange',
                 //TODO: number taken by observation... get the origin of this
 				COMPONENT_DOM = '<div class="coverFlow">'+
 					'	<div>'+
@@ -39,7 +40,8 @@
             function setAfterSlide(currentSlide) {
                 var itemWidth = currentSlide.outerWidth(true),
                     pos = initialPos + ((infoWidth - itemWidth) / 2) + MARGIN_DELTA - previousItems.width() + (itemWidth * (currentSlide.parent()[0] === previousItems[0] ? 1 : 0));
-
+				
+				currentSlide.unbind('webkitTransitionEnd').bind('webkitTransitionEnd',onSlideDisplayed);
                 reference.css('-webkit-transform', 'translate3d(' + pos + 'px,0px,0px)');
                 info.text(currentSlide.find('img').attr('alt'));
             }
@@ -52,13 +54,14 @@
              */
 
             function changeElement(currentList, previousList) {
-                if ((currentList.children('li').length > 1) && currentList.hasClass('active')) {
+				if ((currentList.children('li').length > 1) && currentList.hasClass('active')) {
                     previousList.addClass('inactive').append(currentList.find('li:last'));
-                    //force transition refresh
+                    
+					//force transition refresh
                     setTimeout(function() {
                         previousList.removeClass('inactive');
                     }, 0);
-
+					
                     setAfterSlide(currentList.find('li:last'));
                 } else if (currentList.children('li').length > 0) {
                     currentList.addClass('active');
@@ -97,9 +100,8 @@
 
             function setBindings() {
                 container.bind('swipeleft swiperight', function(event) {
-                    console.log(event.keyCode)
                     event.preventDefault();
-                    switch (event.type) {
+					switch (event.type) {
                     case 'swipeleft':
                         changeElement(nextItems, previousItems);
                         break;
@@ -107,8 +109,9 @@
                     case 'swiperight':
                         changeElement(previousItems, nextItems);
                         break;
-                    }
+					}
                 });
+				
                 $(document).keyup(function(event) {
                     switch (event.keyCode) {
                     case 37:
@@ -120,6 +123,20 @@
                     }
                 });
             }
+			
+			/**
+			 * @name onSlideDisplayed
+			 * @description behavior triggered when the current slide ends animation
+			 * @param event {Event} Current slide which ends animation
+			 */
+			function onSlideDisplayed(event){
+				var elem = $(event.currentTarget).unbind('webkitTransitionEnd'),
+					newTarget = elem.find('img').get(0),
+					customEvent = $.Event(CHANGE_EVENT);
+					
+				customEvent.value = newTarget;
+				container.trigger(customEvent);
+			}
 
             /**
              * @name Anonymous
