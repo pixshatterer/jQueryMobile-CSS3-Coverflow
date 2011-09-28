@@ -18,6 +18,10 @@
 	overflow:hidden;
 }
 
+.coverFlow div.content.loading{
+	opacity:0;
+}
+
 .coverFlow ul,.coverFlow li,.coverFlow p{
 	position:relative;
 }
@@ -58,7 +62,7 @@
 
 .coverFlow > div > div > ul > li{
 	display:block;
-	height:120px;*/
+	height:120px;
 	width:120px;
 	-webkit-perspective: 500px;
 }
@@ -107,7 +111,7 @@
 	-webkit-box-shadow: 0px 0px 15px #000000;
 	/*reflection*/
 	-webkit-box-reflect: below 1px
-	-webkit-gradient( linear, left bottom, left top, color-stop(0.10, rgba(255,255,255,0.7)), color-stop(0.50, transparent));
+	-webkit-gradient( linear, left bottom, left top, color-stop(0.10, rgba(255,255,255,0.3)), color-stop(0.50, transparent));
 }
 
 .coverFlow > div > div > ul > li > div,
