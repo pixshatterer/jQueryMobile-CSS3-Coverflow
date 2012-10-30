@@ -6,7 +6,7 @@
      * @requires jQuery
      * @requires jQueryMobile (for swipe events)
      */
-    $.fn.coverFlow = function(options) {
+    $.fn.coverFlow = function(opt) {
 
         /**
          * @name buildCoverFlow
@@ -162,7 +162,8 @@
             }());
         }
         return this.each(function() {
-            buildCoverFlow(this, options);
+            opt = opt || {};
+            buildCoverFlow(this, opt);
         });
     };
 }(jQuery || $));
